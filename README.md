@@ -6,10 +6,10 @@ FIT: Forecasting Intensity and Track of Tropical Cyclones in Bay of Bengal using
 <i>Code files</i>:
 <br>
 <ul>
-  <li>Python file (.py) containing the function definition of the custom loss function based on Euclidean distance for track (latitude and longitude)</li>
-  <li>Python file (.py) containing the code for simultaneously forecasting the intensity and track of TCs for a lead time of 3 hrs using 12 hrs of past inputs with a cadence of 30 minutes</li>
-  <li>Python file (.py) containing the code for simultaneously forecasting the intensity and track of TCs for a lead time of 6 hrs using 24 hrs of past inputs with a cadence of 30 minutes</li>
-  <li>Python file (.py) containing the code for simultaneously forecasting the intensity and track of TCs for a lead time of 6 hrs using 24 hrs of past inputs with a cadence of 1 hr</li>
+  <li>Python file (.py) containing the custom loss function based on Euclidean distance for track (latitude and longitude); <b>filename=custom_loss.py</b></li>
+  <li>Python file (.py) containing the code for simultaneously forecasting the intensity and track of TCs for a lead time of 3 hrs using 12 hrs of past inputs with a cadence of 30 minutes; <b>filename=0.5hr_12hr_3hr.py</b></li>
+  <li>Python file (.py) containing the code for simultaneously forecasting the intensity and track of TCs for a lead time of 6 hrs using 24 hrs of past inputs with a cadence of 30 minutes; <b>filename=0.5hr_24hrs_6hrs.py</b></li>
+  <li>Python file (.py) containing the code for simultaneously forecasting the intensity and track of TCs for a lead time of 6 hrs using 24 hrs of past inputs with a cadence of 1 hr; <b>filename=1hr_24hrs_6hrs.py</b></li>
 </ul>
 <br>
 <i>Data files</i>:
