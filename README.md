@@ -15,6 +15,6 @@ FIT: Forecasting Intensity and Track of Tropical Cyclones in Bay of Bengal using
 <i>Data files</i>:
 <br>
 <ul>
-  <li>Directory of BoB TC images of dimensions 64 x 64</li>
-  <li>Directory of interpolated numerical data of BoB TCs in the form of CSV files </li>
+  <li>Directory of BoB TC images of dimensions 64 x 64; filename= </li>
+  <li>Directory of interpolated numerical data of BoB TCs in the form of CSV files; filename= Interpolated CSV files for track prediction.zip</li>
 </ul>
