@@ -121,7 +121,7 @@ print(model.summary())
 model.compile(
     optimizer=Adam(learning_rate=0.001),
     loss={
-        "tf.reshape": "mean_squared_error", # MSE/Custom loss for latitude/longitude
+        "tf.reshape": "mean_squared_error", # or euclidean_distance_loss
         "tf.reshape_1": "mean_squared_error",    # MSE for pressure
         "tf.reshape_2": "mean_squared_error"   # MSE for wind speed
     },
