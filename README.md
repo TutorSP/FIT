@@ -18,3 +18,6 @@ FIT: Forecasting Intensity and Track of Tropical Cyclones in Bay of Bengal using
   <li>Directory of BoB TC images of dimensions 64 x 64; <b>filename= "FIT images.zip"</b></li>
   <li>Original numerical data of BoB TCs; <b>filename= "Original EXCEL files for track prediction.zip"</b></li>
 </ul>
+<i>Data preparation</i>:
+<br>
+The numerical data (LAT, LON, ECP, MSW) have a cadence of 3hrs or 6hrs whereas images are available every 30 minutes. To resolve this inconsistency in the cadence, the numerical variables are independently linearly interpolated. Depending on the input length, output length and cadence, consecutive images are grouped together to form an image data tuple. For instance, if the experiment is the forecast of intensity and track of TCs for a lead time of 3hrs using 12hrs of input and 0.5hr cadence, images of 24 consecutive timestamps are stacked to form one input image data tuple. Similarly, the numerical variables are also stacked together to form one input numerical data tuple. Numerical data of next 6 consecutive timestamps are stacked together to form the corresponding ground truth. If an image data tuple contains one or more blank images, both the image data tuple and the corresponding numerical data tuple are discarded.
