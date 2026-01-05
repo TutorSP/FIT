@@ -90,6 +90,7 @@ x = Activation('relu')(x)
 x = MaxPooling3D(pool_size=(1, 2, 2))(x)
 x = ConvLSTM2D(filters=64, kernel_size=(3, 3), padding='same', return_sequences=False)(x)
 x = Activation('relu')(x)
+x = TimeDistributed(Flatten())(tf.expand_dims(x, axis=1))  # Add time dimension back
 x = Dense(128, activation='relu')(x)
 
 # LSTM / GRU for numerical data tuples
@@ -111,6 +112,10 @@ output_lat_lon = Dense(12 * 2, activation='linear', name="output_lat_lon")(merge
 output_pressure = Dense(12, activation='linear', name="output_pressure")(merged)   # 12 time steps, 1 unit each
 output_wind_speed = Dense(12, activation='linear', name="output_wind_speed")(merged)  # 12 time steps, 1 unit each
 
+# Reshape the outputs back to time-step format
+output_lat_lon = tf.reshape(output_lat_lon, (-1, 12, 2), name="final_lat_lon")
+output_pressure = tf.reshape(output_pressure, (-1, 12, 1), name="final_ecp")
+output_wind_speed = tf.reshape(output_wind_speed, (-1, 12, 1), name="final_msw")
 
 
 # Final model
