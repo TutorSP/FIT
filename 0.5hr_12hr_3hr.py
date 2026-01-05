@@ -1,5 +1,5 @@
 # This code requires input and output numpy arrays to run.
-# Due to constraints on file size that can be uploaded to GitHub, the data tuples in the form of numpy arrays could not be provided.
+# The data tuples are in the form of numpy arrays.
 # See the manuscript for details on preparing data tuples and interpolating the numerical data which have been obtained from RSMC reports.
 
 import numpy as np
