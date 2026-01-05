@@ -87,9 +87,9 @@ feature_input = Input(shape=(24, 4), name="feature_input")
 x = ConvLSTM2D(filters=32, kernel_size=(3, 3), padding='same', return_sequences=True)(image_input)
 x = Activation('relu')(x)
 x = MaxPooling3D(pool_size=(1, 2, 2))(x)
-
+x = ConvLSTM2D(filters=64, kernel_size=(3, 3), padding='same', return_sequences=False)(x)
 x = Activation('relu')(x)
-
+x = TimeDistributed(Flatten())(tf.expand_dims(x, axis=1))  # Add time dimension back
 x = Dense(128, activation='relu')(x)
 
 # LSTM / GRU for numerical data tuples
@@ -106,6 +106,10 @@ merged = Concatenate()([x, y])
 
 merged = Dense(256, activation='relu')(merged)
 
+# Intensity (ECP and MSW) and track (LAT and LON) for the next 3 hours
+output_lat_lon = Dense(6 * 2, activation='linear', name="output_lat_lon")(merged)  # 6 time steps, 2 units each
+output_pressure = Dense(6, activation='linear', name="output_pressure")(merged)   # 6 time steps, 1 unit each
+output_wind_speed = Dense(6, activation='linear', name="output_wind_speed")(merged)  # 6 time steps, 1 unit each
 
 # Reshape the outputs back to time-step format
 output_lat_lon = tf.reshape(output_lat_lon, (-1, 6, 2), name="final_lat_lon")
