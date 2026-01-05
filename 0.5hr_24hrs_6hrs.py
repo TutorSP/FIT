@@ -1,3 +1,7 @@
+# This code requires input and output numpy arrays to run
+# Due to constraints on file size that can be uploaded to GitHub, the numpy arrays could not be provided
+# See the manuscript for details on preparing the numpy arrays and interpolating the numerical data which have been obtained from RSMC reports
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
