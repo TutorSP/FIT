@@ -1,6 +1,6 @@
-# This code requires input and output numpy arrays to run
-# Due to constraints on file size that can be uploaded to GitHub, the numpy arrays could not be provided
-# See the manuscript for details on preparing the numpy arrays and interpolating the numerical data which have been obtained from RSMC reports
+# This code requires input and output numpy arrays to run.
+# The data tuples are in the form of numpy arrays.
+# See the manuscript for details on preparing data tuples and interpolating the numerical data which have been obtained from RSMC reports.
 
 import numpy as np
 import pandas as pd
@@ -87,7 +87,7 @@ feature_input = Input(shape=(48, 4), name="feature_input")
 # ConvLSTM2D for satellite image time series data
 x = ConvLSTM2D(filters=32, kernel_size=(3, 3), padding='same', return_sequences=True)(image_input)
 x = Activation('relu')(x)
-
+x = MaxPooling3D(pool_size=(1, 2, 2))(x)
 x = ConvLSTM2D(filters=64, kernel_size=(3, 3), padding='same', return_sequences=False)(x)
 x = Activation('relu')(x)
 x = TimeDistributed(Flatten())(tf.expand_dims(x, axis=1))  # Add time dimension back
@@ -117,7 +117,8 @@ output_lat_lon = tf.reshape(output_lat_lon, (-1, 12, 2), name="final_lat_lon")
 output_pressure = tf.reshape(output_pressure, (-1, 12, 1), name="final_ecp")
 output_wind_speed = tf.reshape(output_wind_speed, (-1, 12, 1), name="final_msw")
 
-
+# Final model
+model = Model(inputs=[image_input, feature_input], outputs=[output_lat_lon, output_pressure, output_wind_speed])
 print(model.summary())
 
 model.compile(
